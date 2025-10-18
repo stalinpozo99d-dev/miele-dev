@@ -1,0 +1,571 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Milena Alexandra Tayán Tabango - Hoja de Vida Completa</title>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    
+    <style>
+        /* ================================================= */
+        /* CSS PRINCIPAL (HOJA DE VIDA)                      */
+        /* ================================================= */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Roboto', sans-serif;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
+        }
+
+        .container {
+            display: flex;
+            min-height: 100vh;
+            max-width: 1200px; 
+            margin: 20px auto; 
+            background-color: white;
+            box-shadow: 0 0 15px rgba(0,0,0,0.1);
+            border-radius: 8px; 
+        }
+
+        /* Sidebar Styles */
+        .sidebar {
+            width: 300px;
+            background: linear-gradient(135deg, #008080, #006666);
+            color: white;
+            padding: 30px 20px;
+            box-shadow: 2px 0 10px rgba(0,0,0,0.1);
+            border-top-left-radius: 8px;
+            border-bottom-left-radius: 8px;
+        }
+        
+        .profile-photo {
+            width: 150px;
+            height: 150px;
+            border-radius: 50%;
+            object-fit: cover;
+            display: block;
+            margin: 0 auto;
+            border: 5px solid rgba(255, 255, 255, 0.3);
+        }
+
+        .profile-name {
+            text-align: center;
+            font-size: 22px;
+            font-weight: 700;
+            margin-top: 15px;
+            margin-bottom: 30px;
+            color: white;
+            line-height: 1.3;
+        }
+
+        .section-title {
+            background-color: rgba(0,0,0,0.2);
+            padding: 12px 15px;
+            margin: 25px 0 15px 0;
+            border-radius: 5px;
+            font-weight: 600;
+            font-size: 16px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-info, .links {
+            padding: 0 10px;
+        }
+
+        .contact-item, .link-item {
+            display: flex;
+            align-items: center;
+            margin-bottom: 15px;
+            padding: 8px 0;
+        }
+
+        .contact-item i, .link-item i {
+            width: 25px;
+            margin-right: 12px;
+            font-size: 16px;
+        }
+
+        .contact-item a, .link-item a, .contact-item span {
+            color: white;
+            text-decoration: none;
+            transition: all 0.3s ease;
+        }
+
+        .contact-item a:hover, .link-item a:hover {
+            color: #e0f7fa;
+            text-decoration: underline;
+        }
+
+        /* Main Content Styles */
+        .main-content {
+            flex: 1;
+            padding: 30px;
+            background-color: white;
+            border-top-right-radius: 8px;
+            border-bottom-right-radius: 8px;
+        }
+
+        .bio-section {
+            background-color: #f8f9fa;
+            border: 1px solid #e9ecef;
+            border-radius: 8px;
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+
+        .bio-section h2 {
+            color: #008080;
+            margin-bottom: 20px;
+            font-size: 24px;
+            border-bottom: 2px solid #008080;
+            padding-bottom: 10px;
+        }
+
+        .bio-text {
+            margin-bottom: 20px;
+            line-height: 1.8;
+            text-align: justify;
+        }
+
+        .quote {
+            font-style: italic;
+            color: #555;
+            border-left: 3px solid #008080;
+            padding-left: 15px;
+            margin: 20px 0;
+        }
+
+        .interests-section h3 {
+            color: #008080;
+        }
+
+        .interests-list {
+            padding-left: 20px;
+        }
+
+        .interests-list li {
+            margin-bottom: 8px;
+        }
+        
+        /* ================================================= */
+        /* CSS PORTAFOLIO (AJUSTADO)                       */
+        /* ================================================= */
+
+        .portfolio-section {
+            margin-top: 30px;
+            border-top: 1px solid #ddd;
+            padding-top: 20px;
+        }
+
+        .portfolio-section h2 {
+            color: #333;
+            margin-bottom: 25px;
+            font-size: 24px;
+            text-align: center;
+            text-transform: uppercase;
+        }
+
+        /* Estilos de las Pestañas (Tabs) */
+        .portfolio-tabs { 
+            display: flex; 
+            border-bottom: 1px solid #ccc; 
+            margin-bottom: 0; 
+            background-color: #eee;
+        }
+        .tab-port { 
+            padding: 10px 15px; 
+            cursor: pointer; 
+            border: 1px solid #ccc; 
+            border-bottom: none;
+            border-right: none;
+            background-color: #f7f7f7;
+            transition: background-color 0.15s;
+            text-transform: uppercase;
+            font-size: 0.9em;
+            white-space: nowrap;
+        }
+        .tab-port:last-child { 
+            border-right: 1px solid #ccc;
+        }
+        .tab-port.active { 
+            background-color: #fff; 
+            border-color: #ccc; 
+            border-bottom: 1px solid #fff; 
+            font-weight: bold; 
+            color: #008080; /* Color del tema */
+        }
+
+        /* Estilos de la Barra de Año (Acordeón) */
+        .year-title-bar { 
+            background-color: #e0f7fa; 
+            padding: 12px 20px; 
+            margin-top: 5px; 
+            margin-bottom: 0;
+            color: #333; 
+            font-weight: bold;
+            border: 1px solid #b2ebf2;
+            font-size: 1.1em;
+            cursor: pointer; 
+            user-select: none;
+            transition: background-color 0.3s;
+            display: flex; 
+            justify-content: space-between;
+            align-items: center;
+        }
+        .year-title-bar:hover {
+            background-color: #c0deed;
+        }
+        .year-title-bar.active { 
+            background-color: #008080;
+            color: white;
+            border-color: #008080;
+        }
+        
+        /* Contenedor de contenido de cada año (Acordeón) */
+        .year-content {
+            border-left: 1px solid #b2ebf2;
+            border-right: 1px solid #b2ebf2;
+            border-bottom: 1px solid #b2ebf2;
+            padding: 10px 20px;
+            background-color: #fff;
+            /* Se usa display: none/block para el toggle inmediato de visibilidad */
+            display: none; 
+        }
+        .year-content.expanded {
+            display: block; 
+            margin-bottom: 20px;
+        }
+
+        /* ESTILO ESPECÍFICO DE PROYECTO (Fondo amarillo: Virprot) */
+        .project-item-image-style {
+            padding: 15px;
+            border: 1px solid #ffcc00;
+            background-color: #fffae0;
+            border-radius: 4px;
+            line-height: 1.6;
+            margin-bottom: 15px;
+        }
+        .project-item-image-style strong {
+            font-weight: bold; 
+        }
+        .project-item-image-style a {
+            color: #008080; /* Usamos el color del tema */
+            text-decoration: none;
+            font-weight: bold;
+        }
+        .project-item-image-style a:hover {
+            text-decoration: underline;
+        }
+
+        /* Estilo para otros proyectos (Tarjeta genérica) */
+        .project-card { 
+            padding: 15px; 
+            border: 1px solid #ddd; 
+            border-radius: 8px; 
+            background-color: #f9f9f9; 
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05); 
+            margin-bottom: 15px;
+        }
+        .project-card h4 { 
+            margin-top: 0; 
+            color: #00796b; 
+        }
+        .project-card a { 
+            color: #008080; 
+            text-decoration: none; 
+            font-weight: bold; 
+            display: inline-block;
+            margin-top: 5px;
+        }
+        .no-projects-message {
+            text-align: center;
+            padding: 20px;
+            color: #666;
+            font-style: italic;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 900px) {
+            .container {
+                flex-direction: column;
+                margin: 0 auto 20px auto;
+                max-width: 100%;
+            }
+
+            .sidebar {
+                width: 100%;
+                padding: 20px;
+                border-radius: 0;
+            }
+
+            .main-content {
+                padding: 20px;
+                border-radius: 0;
+            }
+            .portfolio-tabs {
+                flex-wrap: wrap;
+                margin-top: 10px;
+            }
+            .tab-port {
+                flex: 1 1 auto;
+                border-right: 1px solid #ccc !important;
+                border-bottom: 1px solid #ccc !important;
+                border-radius: 0;
+            }
+            .tab-port.active {
+                border-bottom: 1px solid #fff !important;
+            }
+        }
+    </style>
+</head>
+<body>
+
+
+    <div class="container">
+    <div class="sidebar">
+        <img src="https://placehold.co/150x150" alt="Foto de Perfil" class="profile-photo"> 
+        <div class="profile-name">
+            MILENA ALEXANDRA TAYÁN TABANGO
+        </div>
+
+
+        <div class="section-title">DATOS DEL CONTACTO</div>
+        <div class="contact-info">
+            <div class="contact-item"><i class="fas fa-envelope"></i> <a href="mailto:milenabout2000@gmail.com">milenabout2000@gmail.com</a></div>
+            <div class="contact-item"><i class="fas fa-phone"></i> <span>(+593) 0983418682</span></div>
+            <div class="contact-item"><i class="fas fa-map-marker-alt"></i> <span>Tulcán - Carchi</span></div>
+        </div>
+
+        <div class="section-title">LINKS EXTERNOS</div>
+        <div class="links">
+            <div class="link-item"><i class="fas fa-file-pdf"></i> <a href="https://upecedu-my.sharepoint.com/:b:/g/personal/milena_tayan_upec_edu_ec/EYETnGD3aG9EuRE4fi0zmP0BBHknwl8Tml0zZZBoFnjrWw?e=e5MtPx" target="_blank">Hoja de Vida PDF</a></div>
+            <div class="link-item"><i class="fab fa-linkedin"></i> <a href="https://www.linkedin.com/in/milena-tay%C3%A1n-32942b361/" target="_blank">LinkedIn</a></div>
+        </div>
+    </div>
+
+    <div class="main-content">
+        <div class="bio-section">
+            <h2 style="text-align: center;">PERFIL PROFESIONAL</h2>
+            <div class="bio-text">
+                <p>Milena Alexandra Tayán Tabango, Profesional en Logística y Transporte graduada de la prestigiosa Universidad Politécnica Estatal del Carchi, con sólida formación en la planificación, gestión y optimización de procesos relacionados con el abastecimiento, almacenamiento, distribución y transporte de bienes y servicios. Su trayectoria académica y práctica le permite implementar soluciones estratégicas que incrementan la eficiencia de las cadenas de suministro, reducen costos operativos y mejoran la satisfacción del cliente mediante la incorporación de herramientas tecnológicas y enfoques innovadores.</p>
+                <p>Además, cuenta con experiencia en manejo de inventarios, gestión de ventas, administración logística, procesos aduaneros y operaciones de comercio internacional, lo que le ha permitido desarrollar competencias técnicas en optimización de cadenas logísticas, modelado de procesos, gestión de transporte multimodal y análisis estratégico.</p>
+                <p>Ha participado en proyectos y actividades laborales que fortalecen su capacidad para gestionar recursos, coordinar operaciones en entornos dinámicos y aplicar metodologías de mejora continua. Se distingue por ser proactiva, resiliente y orientada a resultados, con habilidades para liderar y trabajar en equipos multidisciplinarios, tomar decisiones bajo presión y resolver problemas de manera efectiva, demostrando un alto compromiso con la actualización profesional y el aporte de valor a los procesos logísticos y comerciales.</p>
+                <div class="quote">
+                    "Mi meta profesional es integrar soluciones tecnológicas e innovadoras en la gestión logística, optimizando la planificación y distribución. Busco que esta eficiencia se traduzca directamente en una mayor rentabilidad y en la capacidad de la empresa para responder de forma ágil a las dinámicas del mercado global."
+                </div>
+            </div>
+        </div>
+
+        <div class="interests-section">
+            <h3 style="text-align: center; margin-bottom: 20px; color: #008080;">Intereses Profesionales:</h3>
+            <div class="interests-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px;">
+                <ol class="interests-list" style="list-style-position: inside;">
+                    <li>Innovación logística y transformación digital</li>
+                    <li>Comercio exterior y globalización</li>
+                    <li>Optimización de la cadena de suministro</li>
+                    <li>Mejora continua y eficiencia operativa</li>
+                    <li>Desarrollo profesional y liderazgo</li>
+                </ol>
+                <ol class="interests-list" start="6" style="list-style-position: inside;">
+                    <li>Trabajo en equipo y comunicación efectiva</li>
+                    <li>Aprendizaje constante y formación continua</li>
+                    <li>Sostenibilidad y responsabilidad empresarial</li>
+                    <li>Coordinación y gestión de proyectos</li>
+                    <li>Emprendimiento y estrategias empresariales</li>
+                </ol>
+            </div>
+        </div>
+
+        <div class="portfolio-section">
+            <h2>PORTAFOLIO DE PROYECTOS</h2>
+
+            <div class="portfolio-tabs">
+                <div class="tab-port active" data-tab="consultoria">PROYECTOS CONSULTORIA</div>
+                <div class="tab-port" data-tab="investigacion">PROYECTOS INVESTIGACIÓN</div>
+                <div class="tab-port" data-tab="cursos">CURSOS</div>
+                <div class="tab-port" data-tab="colaboraciones">COLABORACIONES</div>
+            </div>
+
+            <div id="mainContentArea">
+                </div>
+        </div>
+        </div>
+</div>
+
+<script>
+    // ====================================================================
+    // JAVASCRIPT: DATOS Y LÓGICA DEL PORTAFOLIO
+    // ====================================================================
+
+    // DATOS DE LOS PROYECTOS
+    const projectsData = {
+        investigacion: [
+            {title: "Análisis de la Cadena Logística para Exportación de Tomate Riñón desde Pimampiro a Mercados Internacionales.", year: 2022, location: "Municipio Pimampiro - Ecuador", description: "Proyecto de investigación que evaluó la cadena de suministro del tomate riñón de la zona de Pimampiro con miras a la exportación. El estudio identificó desafíos y oportunidades logísticas en la comercialización agrícola sostenible, contribuyendo a la mejora de procesos.", link: "https://upecedu-my.sharepoint.com/:b:/g/personal/milena_tayan_upec_edu_ec/EQtldVlfQX1LlCgxY2Xdx7ABL7iiFi8i64pNDACs2dRIlA?e=uEdptE"},
+
+        
+        ],
+        
+        consultoria: [
+            {title: "Prácticas Preprofesionales en la SENAE (Servicio Nacional de Aduana del Ecuador) ", year: 2025, location: "SENAE Tulcán, Carchi -Ecuador", description: "Realización y cumplimiento de las actividades de las prácticas preprofesionales. Se aplicaron conocimientos académicos para comprender los procesos aduaneros y contribuir a la eficiencia operativa de la institución.", link: "https://upecedu-my.sharepoint.com/:b:/g/personal/milena_tayan_upec_edu_ec/EXLFDlLHYElDnCJVWMxs9iYB13ePBWiRolqkpVOwt2_Fpg?e=FsawoX"},
+            {title: "Diseño de rutas para el mejoramiento del servicio de transporte comercial, modalidad escolar e institucional", year: 2024, location: "Universidad Politécnica Estatal del Carchi", description: "Planificación y diseño de rutas óptimas de transporte escolar e institucional en Tulcán, aplicando logística para reducir costos operativos y mejorar la eficiencia del servicio ofrecido por las operadoras locales.", link: "https://repositorio.upec.edu.ec/items/a9577ce1-ce44-4651-963c-61c1e5c54a90"},
+            {title: "Optimización de la Distribución de Productos Agrícolas", year: 2021, location: "Pimampiro, Ecuador", description: "Diseño de un plan logístico para la distribución eficiente de productos agrícolas desde fincas locales hacia mercados regionales, reduciendo tiempos de entrega y costos operativos.", link: "https://share.google/QtzwkZx4vzaKLUs0c"},
+        ],
+        
+        cursos: [
+            {title: "Curso de VIII Internacional de Ciencias Económicas y Sociales de Innovación y Cultura", year: 2025, location: "Universidad Politécnica Estatal del Carchi (UPEC)", description: "Durante el curso, se presentó una ponencia sobre la aplicación de la logística aduanera en la frontera norte para optimizar los tiempos de despacho, lo cual culminó con la obtención de nuevas herramientas de análisis económico-social.", link: "https://upecedu-my.sharepoint.com/:b:/g/personal/milena_tayan_upec_edu_ec/EaQUACEvbv9IuaOmSXkNdgIBKO5gk9dW0ZK6SZAb5VsW7g?e=DpQEMx"}, 
+            {title: "Curso de Creatividad, Innovación, Emprendimiento y Servicios del MPCEIP", year: 2024, location: "PRO ECUADOR", description: "Se participó activamente en conferencias y talleres sobre las últimas tendencias en innovación, economía y cultura.", link: "https://upecedu-my.sharepoint.com/:b:/g/personal/milena_tayan_upec_edu_ec/EaLkZpQtf-tEjRZJGzWI7DEBPhfgbYCsskkhygOVvBfqiA?e=XCyY3Y"},
+            {title: "Curso de Auxiliar de Enfermería", year: 2023, location: "SEECAINT, Ecuador", description: "Esta formación permitió adquirir conocimientos fundamentales en primeros auxilios, atención básica de pacientes y cuidado asistencial. La capacitación fortalece las habilidades de organización, gestión de recursos humanos y respuesta rápida en situaciones de emergencia.", link: "https://upecedu-my.sharepoint.com/:b:/g/personal/milena_tayan_upec_edu_ec/EbMvqJ8C_7FDoe-vdCYvS4sBScksvHwAmff4IsRUC94F8w?e=rUlWAb"},
+        ],
+        
+        colaboraciones: [
+            {title: "7° Congreso Internacional de Ingenierías – Redes y contribución al cumplimiento de los Objetivos de Desarrollo Sostenible (ODS).", year: 2024, location: "Universidad Politécnica Estatal del Carchi", description: "La participación se enfocó en contribuir al cumplimiento de los Objetivos de Desarrollo Sostenible (ODS), mediante el estudio de la eficiencia y optimización de las redes logísticas. El evento de dos días facilitó el intercambio de conocimientos en el área de ingenierías y redes.", link: "https://upecedu-my.sharepoint.com/:b:/g/personal/milena_tayan_upec_edu_ec/EUQQxTsWyzZNu9YlASuuMXoBgQ3z4heNgecs_KOXuV9EMA?e=g10Mad"},
+    
+        ]
+    };
+
+    // Lista de años completa, utilizada para ordenar la visualización
+    const YEARS = ['2025', '2024', '2023', '2022', '2021', '2020'];
+
+    function getCurrentTab() { 
+        const activeTab = document.querySelector('.tab-port.active');
+        return activeTab ? activeTab.dataset.tab : 'consultoria'; 
+    }
+
+    // Genera el HTML de los proyectos para un AÑO y CATEGORÍA específicos
+    function renderProjectHtml(category, year) {
+        const projects = projectsData[category] || [];
+        const filteredProjects = projects.filter(p => p.year.toString() === year);
+        
+        if (filteredProjects.length === 0) {
+            // Retorna un valor que indica que NO hay contenido, pero no un mensaje visible
+            return null; 
+        }
+
+        return filteredProjects.map((p, index) => {
+            // LÓGICA CLAVE PARA REPLICAR EL FORMATO DE LA IMAGEN DE 'Virprot'
+            if (category === 'investigacion' && p.year.toString() === '2023' && p.client === 'Virprot') {
+                const itemNumber = index + 1;
+                
+                const content = `
+                    ${itemNumber}. 
+                    Título del proyecto: <strong>${p.title}</strong>. 
+                    Rol: <strong>${p.rol}</strong>. 
+                    Tecnologías utilizadas: <strong>${p.tech}</strong>. 
+                    Duración: <strong>${p.duration}</strong>. 
+                    Cliente o empresa: <strong>${p.client}</strong>. 
+                    <a href="${p.link}" target="_blank">Link proyecto</a>
+                `;
+                return `<div class="project-item-image-style">${content}</div>`;
+            } 
+            
+            // Formato de tarjeta genérica para el resto
+            const linkHtml = p.link && p.link !== "URL_DEL_PROYECTO_COLABORACION_1" && p.link !== "URL_DEL_PROYECTO_ENSAMBLE_1" && p.link !== "URL_DEL_PROYECTO_METAVERSO_2" && p.link !== "URL_DEL_PROYECTO_SIMULACION_3" && p.link !== "URL_DEL_PROYECTO_MANGO_4" && p.link !== "URL_DEL_PROYECTO_2022" && p.link !== "URL_DEL_PROYECTO_2021_A" && p.link !== "URL_DEL_PROYECTO_CONSULTORIA_1" && p.link !== "URL_DEL_PROYECTO_CONSULTORIA_2" && p.link !== "URL_DEL_PROYECTO_COLABORACION_2025" ? 
+                `<a href="${p.link}" target="_blank">Ver Enlace</a>` : 
+                '';
+
+            return `
+                <div class="project-card">
+                    <h4>${p.title} (${p.year})</h4>
+                    <div><strong>Ubicación:</strong> ${p.location || 'N/A'}</div>
+                    <p>${p.description || 'N/A'}</p>
+                    ${linkHtml}
+                </div>
+            `;
+        }).join('');
+    }
+
+    // Carga TODA la estructura de años y contenido para la pestaña activa
+    function loadContentByTab(category) {
+        const container = document.getElementById('mainContentArea');
+        let fullHtml = '';
+        let yearsWithContent = [];
+
+        YEARS.forEach(year => {
+            const contentHtml = renderProjectHtml(category, year);
+            
+            // 1. **Filtra años sin contenido:** Solo genera HTML si hay proyectos.
+            if (contentHtml) {
+                yearsWithContent.push(year);
+                
+                // Genera la barra de título del año
+                fullHtml += `<div class="year-title-bar" data-year="${year}">${year}</div>`;
+                
+                // Genera el contenedor de contenido para ese año y lo llena
+                fullHtml += `<div id="content-${year}" class="year-content">${contentHtml}</div>`;
+            }
+        });
+        
+        container.innerHTML = fullHtml;
+
+        // Si no hay contenido en la categoría, muestra un mensaje
+        if (yearsWithContent.length === 0) {
+            container.innerHTML = `<div class="no-projects-message">No hay proyectos disponibles en esta categoría.</div>`;
+        } else {
+            attachAccordionListeners();
+        }
+    }
+    
+    // Función para manejar la expansión/colapso de los años (Acordeón)
+    function attachAccordionListeners() {
+        document.querySelectorAll('.year-title-bar').forEach(bar => {
+            bar.removeEventListener('click', handleYearClick); 
+            bar.addEventListener('click', handleYearClick);
+        });
+
+        // 2. **No expandir ningún año al cargar.** (Se eliminó la lógica de expansión inicial)
+    }
+
+    function handleYearClick(event) {
+        const bar = event.currentTarget;
+        const year = bar.dataset.year;
+        const contentDiv = document.getElementById(`content-${year}`);
+        
+        if (contentDiv.classList.contains('expanded')) {
+            // Colapsar
+            contentDiv.classList.remove('expanded');
+            bar.classList.remove('active');
+        } else {
+            // Colapsar todos los demás (comportamiento de Acordeón)
+            document.querySelectorAll('.year-content').forEach(div => div.classList.remove('expanded'));
+            document.querySelectorAll('.year-title-bar').forEach(b => b.classList.remove('active'));
+
+            // Expandir el seleccionado
+            contentDiv.classList.add('expanded');
+            bar.classList.add('active');
+        }
+    }
+    
+    // Función para manejar el cambio de pestañas
+    function attachTabListeners() {
+        document.querySelectorAll('.tab-port').forEach(tab => {
+            tab.addEventListener('click', () => {
+                document.querySelectorAll('.tab-port').forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                const currentTab = tab.dataset.tab;
+                loadContentByTab(currentTab);
+            });
+        });
+    }
+
+    // Inicialización
+    document.addEventListener('DOMContentLoaded', () => {
+        // 1. Asigna listeners a pestañas
+        attachTabListeners();
+        
+        // 2. Carga el contenido inicial (Consultoría por defecto)
+        const initialTab = getCurrentTab();
+        loadContentByTab(initialTab);
+    });
+</script>
+</body>
+</html>
